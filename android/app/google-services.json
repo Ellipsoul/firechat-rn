@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "789353745622",
+    "project_id": "firechat-reactnative",
+    "storage_bucket": "firechat-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789353745622:android:49fd522b426977cdb50d77",
+        "android_client_info": {
+          "package_name": "com.ellipsoul.firechat_reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789353745622-khhsuj73hei0endn4vllvdtkl4nrqoar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ellipsoul.firechat_reactnative",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "789353745622-7sf0td1aek0s0rlcove3g3oi6ce172d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpxUJV66ahKjMle3Qud8-DTK_k527IeKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789353745622-7sf0td1aek0s0rlcove3g3oi6ce172d6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
