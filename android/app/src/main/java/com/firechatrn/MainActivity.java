@@ -1,4 +1,4 @@
-package com.firechatrn;
+package com.ellipsoul.firechat_reactnative;
 
 import com.facebook.react.ReactActivity;
 
