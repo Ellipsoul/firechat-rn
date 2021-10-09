@@ -21,7 +21,7 @@ const ChatScreen = () => {
   const [loading, setLoading] = useState(true);
   // Track state of user typing in a message and its time
   const [text, setText] = useState('');
-  const timestamp = firestore.FieldValue.serverTimestamp;
+  const timestamp = firestore.FieldValue.serverTimestamp();
 
   // Handle logic to send a new message
   const sendMessage = async e => {
