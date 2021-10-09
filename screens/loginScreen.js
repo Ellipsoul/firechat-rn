@@ -29,6 +29,7 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      {/* Easy button for Google Sign In out of the box */}
       <GoogleSigninButton
         style={styles.googleButton}
         size={GoogleSigninButton.Size.Wide}
