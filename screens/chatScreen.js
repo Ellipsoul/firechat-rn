@@ -63,6 +63,8 @@ const ChatScreen = () => {
     }
   };
 
+  const handleSignOut = async () => await auth().signOut();
+
   // Run once to collect chat messages
   useEffect(() => {
     const unsubscribe = firestore()
