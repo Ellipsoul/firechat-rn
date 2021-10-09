@@ -19,6 +19,49 @@ const ChatScreen = () => {
   // Track state of chats and loading state
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
+  // Track state of user typing in a message and its time
+  const [text, setText] = useState('');
+  const timestamp = firestore.FieldValue.serverTimestamp;
+
+  // Handle logic to send a new message
+  const sendMessage = async e => {
+    const {uid, photoURL} = auth().currentUser;
+
+    // Dont allow empty/large messages
+    if (text.length > 1 && text.length < 40) {
+      try {
+        e.preventDefault();
+        setLoading(true);
+        // Make a Firestore write
+        await firestore()
+          .collection('chats')
+          .doc()
+          .set({
+            owner: uid,
+            imageUrl: photoURL,
+            text: text,
+            createdAt: timestamp,
+          })
+          .then(() => {
+            // On success, empty the text field and stop loading state
+            setText('');
+            setLoading(false);
+          })
+          .catch(err => {
+            // On failure, alert user
+            setLoading(false);
+            Alert.alert('Message failed to send', err);
+          });
+      } catch (err) {
+        setLoading(false);
+        Alert.alert('Error', err);
+      }
+    } else {
+      // Warn the user about chat message length
+      setLoading(false);
+      Alert.alert('Chat not sent', 'Must be between 1 and 40 characters');
+    }
+  };
 
   // Run once to collect chat messages
   useEffect(() => {
@@ -35,6 +78,9 @@ const ChatScreen = () => {
           // Add docId and chat data to chats array
           chatsArr.push({id, ...data});
         });
+        // Finall update the chat array state and stop loading state
+        setChats(chatsArr);
+        setLoading(false);
       });
 
     // Unsubscribe from listening to chats after the use has logged out/navigated away
@@ -70,6 +116,12 @@ const ChatScreen = () => {
               renderItem={({item}) => <Chat key={item.id} chat={item} />}
             />
           )}
+        </View>
+
+        {/* Bottom text field for sending chats */}
+        <View style={styles.inputContainer}>
+          <Input text={text} setText={setText} />
+          <SendButton handleChat={sendMessage} />
         </View>
       </View>
     );
